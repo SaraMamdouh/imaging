@@ -1,0 +1,4 @@
+export const FETCH_DATA_SUCCESS="FETCH_DATA_SUCCESS";
+ export const DELETE_POST="DELETE_POST";
+ export const CREATE_POST="CREATE_POST";
+ export const UPDATE_POST="UPDATE_POST";
