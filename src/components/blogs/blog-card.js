@@ -80,7 +80,6 @@ import EditModal from './EditModal';
         <div className="comments">
           <form onSubmit={(e)=> AddComment(e,props.card.id)}>
           <input className="form-control  mt-2 pb-2" placeholder="enter comment"   onKeyPress={(e)=>SaveComment(e)}/>
-          <button className="btn comment-button" type="submit">Post</button>
         </form>
         <div className="comment">
         {
