@@ -8,7 +8,7 @@ import {CreatePosts} from '../redux/posts/postsAction';
 function BlogModal({isOpen,close,createPosts}){ 
   const[newPost,setPost]=useState({})
   const [tagArray,setTagArray]=useState([]);
-  var post={};
+ 
 
   const AddTags =(e)=>{
    if(e.key==="Enter") {
@@ -23,7 +23,7 @@ function BlogModal({isOpen,close,createPosts}){
 
   const AddPost= (e)=>{
     e.preventDefault();
-    post={
+   var post={
       ...newPost,
       id:String(Math.floor(Math.random() * 101)),
       publishDate:String(new Date(Date.now())),
@@ -41,6 +41,7 @@ function BlogModal({isOpen,close,createPosts}){
           ...prev,
           owner:{
             ...prev.owner,
+            picture:"",
           [e.target.name]: e.target.value,
           email:"smamdouh@hotmail.com",
           id:String(Math.random()),
@@ -69,27 +70,27 @@ function BlogModal({isOpen,close,createPosts}){
           <form onSubmit={(e)=>AddPost(e)}>
   <div className="form-group name">
     <label htmlFor="exampleFormControlInput1" className="publisher-label">Publisher Name</label>
-    <input type="text" className="form-control first" id="exampleFormControlInput1" placeholder="Enter Your First Name" name="firstName" onChange={(e,owner)=>SaveData(e,true)}/>
-    <input type="text" className="form-control last" id="exampleFormControlInput2" placeholder="Enter Your Second Name" name="lastName" onChange={(e,owner)=>SaveData(e,true)}/>
+    <input type="text" className="form-control first" id="exampleFormControlInput1" placeholder="Enter Your First Name" name="firstName" onChange={(e,owner)=>SaveData(e,true)} required/>
+    <input type="text" className="form-control last" id="exampleFormControlInput2" placeholder="Enter Your Second Name" name="lastName" onChange={(e,owner)=>SaveData(e,true)} required/>
   </div>
   <div className="form-group ">
     <label htmlFor="exampleFormControlInput1" className="publisher-label">tags</label>
-  <input type="text" className="form-control " id="exampleFormControlInput3" placeholder="Enter tags"  name="tags" onKeyPress={(e)=>AddTags(e)}/>
+  <input type="text" className="form-control " id="exampleFormControlInput3" placeholder="Enter tags"  name="tags" onKeyPress={(e)=>AddTags(e)} />
     {tagArray.map(i=>
     <span className="badge badge-secondary m-1 mt-3 tags">{i}</span>
     )}
   </div>
   <div className="form-group ">
     <label htmlFor="exampleFormControlInput1" className="publisher-label">Provided link</label>
-    <input type="text" className="form-control " id="exampleFormControlInput3" placeholder="Enter link" name="link"  onChange={(e,owner)=>SaveData(e,false)}/>
+    <input type="text" className="form-control " id="exampleFormControlInput3" placeholder="Enter link" name="link"  onChange={(e,owner)=>SaveData(e,false)} required/>
   </div>
   <div className="form-group">
     <label htmlFor="exampleFormControlTextarea1">Post Text</label>
-    <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" name="text" onChange={(e,owner)=>SaveData(e,false)}></textarea>
+    <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" name="text" onChange={(e,owner)=>SaveData(e,false)} required></textarea>
   </div>
   <div className="form-group">
     <label htmlFor="exampleFormControlFile1">image Url</label>
-    <input type="text" className="form-control" id="exampleFormControlFile1" name="image" onChange={(e,owner)=>SaveData(e,false)}/>
+    <input type="text" className="form-control" id="exampleFormControlFile1" name="image" onChange={(e,owner)=>SaveData(e,false)} required/>
   </div>
   <div className="button text-right">
   <button type="submit" className="btn btn-primary" >Save</button>

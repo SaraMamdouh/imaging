@@ -70,7 +70,7 @@ import EditModal from './EditModal';
       </div>
   <img src={props.card.image} className="card-image" alt="...."/>
   <div className="card-body">
-    {props.card.tags.map(i=>
+    {props.card.tags && props.card.tags.map(i=>
       <span className="badge badge-info mr-1 mb-3 p-1" key={Math.random()}>{i}</span>
       )}
     <p className="card-text">{props.card.text}</p>
